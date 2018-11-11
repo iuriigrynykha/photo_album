@@ -12,7 +12,7 @@ import "semantic-ui-css/semantic.min.css";
 import "react-image-lightbox/style.css";
 import "./styles.css";
 
-import { login } from "./actions/auth";
+import { createUserSaga } from "./sagas/usersSaga";
 
 import registerServiceWorker from "./registerServiceWorker";
 import { albumsAPI } from "./actions/albums";
@@ -21,7 +21,7 @@ if (localStorage.token) {
   const payload = jwt.decode(localStorage.token);
   const user = payload.token;
   store.dispatch(albumsAPI(user));
-  store.dispatch(login(user));
+  createUserSaga(user);
 }
 
 ReactDOM.render(

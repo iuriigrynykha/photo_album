@@ -5,3 +5,4 @@ export const USER_PHOTOS_FETCHED = "USER_PHOTOS_FETCHED";
 export const GET_USER_ALBUM_ID = "GET_USER_ALBUM_ID";
 
 export const LOG_IN_REQUEST = "LOG_IN_REQUEST";
+export const LOG_OUT_USER = "LOG_OUT_USER";

@@ -1,7 +1,8 @@
-// import { takeLatest } from "redux-saga/effects";
-// import { LOG_IN_REQUEST } from "./types";
-// import createUserSaga from "./sagas/usersSaga";
+import { takeLatest } from "redux-saga/effects";
+import { LOG_IN_REQUEST, LOG_OUT_USER } from "./types";
+import { createUserSaga, userLogout } from "./sagas/usersSaga";
 
-// export function* rootsaga() {
-//   yield takeLatest(LOG_IN_REQUEST, createUserSaga);
-// }
+export default function* rootSaga() {
+  yield takeLatest(LOG_IN_REQUEST, createUserSaga);
+  yield takeLatest(LOG_OUT_USER, userLogout);
+}

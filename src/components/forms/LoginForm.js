@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { Form, Button, Message } from "semantic-ui-react";
 import Validator from "validator";
+import { connect } from "react-redux";
+import { loginRequest } from "../../actions/auth";
 
 import InlineError from "../messages/InlineError";
 
@@ -19,12 +21,7 @@ class LoginForm extends Component {
     this.setState({ errors });
     if (Object.keys(errors).length === 0) {
       this.setState({ loading: true });
-      this.props.submit(this.state.userId).catch(() =>
-        this.setState({
-          errors: { global: "Invalid credentials" },
-          loading: false
-        })
-      );
+      this.props.submit(this.state.userId);
     }
   };
 
@@ -67,4 +64,7 @@ LoginForm.propTypes = {
   submit: PropTypes.func.isRequired
 };
 
-export default LoginForm;
+export default connect(
+  null,
+  { submit: loginRequest }
+)(LoginForm);
